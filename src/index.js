@@ -16,6 +16,7 @@ const colors = [
 // goal is to loop through array, and assign textContent to the buttons
 // add text (textContent), class (class ids), and value to the button
 // append button to parent node
+
 for(let index = 0; index < colors.length; index++) {
     let color = colors[index];
     const colorButtonNode = document.createElement('button'); // creates a new button during each loop
@@ -25,7 +26,6 @@ for(let index = 0; index < colors.length; index++) {
     
     // call back function; won't fire until button is clicked
     colorButtonNode.addEventListener('click', function() {
-        console.log(colorButtonNode.value + ' clicked!');
 
         // once the button is clicked, calls paint function to paint the color block the color that corresponds with the button
         paint(color);
@@ -34,6 +34,7 @@ for(let index = 0; index < colors.length; index++) {
     colorButtonsNode.appendChild(colorButtonNode); // appends this child node to the parent colorButtonsNode
 }
 
+//loop that generates transform buttons and options
 for(let index = 0; index < colors.length; index++) {
     let color = colors[index];
     const colorTransformNode = document.createElement('button'); // creates a new button during each loop
@@ -43,10 +44,9 @@ for(let index = 0; index < colors.length; index++) {
     
     // call back function; won't fire until button is clicked
     colorTransformNode.addEventListener('click', function() {
-        console.log(colorTransformNode.value + ' clicked!');
-
-        // once the button is clicked, calls ___ function to transform the shape into circle
         
+        // once the button is clicked, calls circleTransform function to transform the shape into circle
+        circleTransform(color);
     });
 
     transformButtonsNode.appendChild(colorTransformNode); // appends this child node to the parent
@@ -60,4 +60,15 @@ function paint(color) {
     console.log(colorBlock);
 
     canvasNode.appendChild(colorBlock); // attaches the child node onto the bigger parent canvas node
+}
+
+// function that transforms shapes
+function circleTransform(color) {
+    const selector = '.color-block.' + color;
+    const colorBlocks = document.querySelectorAll(selector);
+    console.log(colorBlocks);
+
+    for(let index = 0; index < colorBlocks.length; index++) {
+        colorBlocks[index].classList.add('transform');
+    }
 }

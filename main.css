@@ -25,3 +25,7 @@
 .yellow {
     background: yellow;
 }
+
+.transform {
+    border-radius: 120px;
+}
