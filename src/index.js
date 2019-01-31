@@ -1,6 +1,7 @@
 // grab color button node in html section called color-buttons
 // console.log after grabbing the node to make sure it actually grabs it
 const colorButtonsNode = document.getElementById('color-buttons');
+const canvasNode = document.getElementById('canvas'); // grabs canvas node
 
 // create array of colors
 const colors = [
@@ -24,11 +25,20 @@ for(let index = 0; index < colors.length; index++) {
     // call back function; won't fire until button is clicked
     colorButtonNode.addEventListener('click', function() {
         console.log(colorButtonNode.value + ' clicked!');
+
+        // calls paint function
+        paint(color);
     });
 
     colorButtonsNode.appendChild(colorButtonNode); // appends this child node to the parent colorButtonsNode
 }
 
+// function that creates shapes for canvas
+function paint(color) {
+    const colorBlock = document.createElement('span');
+    colorBlock.classList.add(color);
+    colorBlock.classList.add('color-block');
+    console.log(colorBlock);
 
-
-
+    canvasNode.appendChild(colorBlock);
+}
