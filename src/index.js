@@ -68,6 +68,7 @@ function circleTransform(color) {
     const colorBlocks = document.querySelectorAll(selector);
     console.log(colorBlocks);
 
+    // querySelectorAll indicates an array, so loop through the list and assign each one a class id transform
     for(let index = 0; index < colorBlocks.length; index++) {
         colorBlocks[index].classList.add('transform');
     }
