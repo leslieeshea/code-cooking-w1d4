@@ -1,7 +1,8 @@
-// grab color button node in html section called color-buttons
+// grab parent nodes from html
 // console.log after grabbing the node to make sure it actually grabs it
 const colorButtonsNode = document.getElementById('color-buttons');
 const canvasNode = document.getElementById('canvas'); // grabs canvas node
+const transformButtonsNode = document.getElementById('transform-buttons'); // grabs transform-button node
 
 // create array of colors
 const colors = [
@@ -20,25 +21,43 @@ for(let index = 0; index < colors.length; index++) {
     const colorButtonNode = document.createElement('button'); // creates a new button during each loop
     colorButtonNode.textContent = color; // gives each button text
     colorButtonNode.value = color; // gives each button value
-    colorButtonNode.classList.add('color-button'); // gives each button a class id
+    colorButtonNode.classList.add('color-button', color); // gives each button a class id
     
     // call back function; won't fire until button is clicked
     colorButtonNode.addEventListener('click', function() {
         console.log(colorButtonNode.value + ' clicked!');
 
-        // calls paint function
+        // once the button is clicked, calls paint function to paint the color block the color that corresponds with the button
         paint(color);
     });
 
     colorButtonsNode.appendChild(colorButtonNode); // appends this child node to the parent colorButtonsNode
 }
 
+for(let index = 0; index < colors.length; index++) {
+    let color = colors[index];
+    const colorTransformNode = document.createElement('button'); // creates a new button during each loop
+    colorTransformNode.textContent = color; // gives each button text
+    colorTransformNode.value = color; // gives each button value
+    colorTransformNode.classList.add('transform-button', color); // gives each button a class id
+    
+    // call back function; won't fire until button is clicked
+    colorTransformNode.addEventListener('click', function() {
+        console.log(colorTransformNode.value + ' clicked!');
+
+        // once the button is clicked, calls ___ function to transform the shape into circle
+        
+    });
+
+    transformButtonsNode.appendChild(colorTransformNode); // appends this child node to the parent
+}
+
 // function that creates shapes for canvas
 function paint(color) {
-    const colorBlock = document.createElement('span');
-    colorBlock.classList.add(color);
-    colorBlock.classList.add('color-block');
+    const colorBlock = document.createElement('span'); // creates a new color block element
+    colorBlock.classList.add(color); // gives each color block a color
+    colorBlock.classList.add('color-block'); // gives each color block a color-block class id
     console.log(colorBlock);
 
-    canvasNode.appendChild(colorBlock);
+    canvasNode.appendChild(colorBlock); // attaches the child node onto the bigger parent canvas node
 }
