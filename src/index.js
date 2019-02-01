@@ -64,8 +64,8 @@ function paint(color) {
 
 // function that transforms shapes
 function circleTransform(color) {
-    const selector = '.color-block.' + color;
-    const colorBlocks = document.querySelectorAll(selector);
+    const selector = '.color-block.' + color; // 
+    const colorBlocks = document.querySelectorAll(selector); // grab all things that meet selector requirement
     console.log(colorBlocks);
 
     // querySelectorAll indicates an array, so loop through the list and assign each one a class id transform
